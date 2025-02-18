@@ -64,9 +64,8 @@
                                                     Sebelum<br><?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
                                                 <?php }
                                             } elseif ($db->statusbeli == "Sudah Upload Bukti Pembayaran" || $db->statusbeli == "Menunggu Konfirmasi") { ?>
-                                                <a class="btn text-white" style="background-color: #7988de">Menunggu
-                                                    Konfirmasi
-                                                    Admin</a>
+                                                <a class="btn text-white" style="background-color: #7988de">Sudah Di Bayar
+                                                </a>
                                                 <?php } elseif ($db->statusbeli == "Pesanan Di Terima") { ?>
                                                 <a href="{{ url('home/detailtransaksi/' . $db->idpembelianreal) }}"
                                                     class="btn text-white" style="background-color: #7988de">Pesanan Di
