@@ -38,7 +38,7 @@
                                             <td style="color: black;">{!! tanggal($db->tanggalbeli) . '<br>' . date('H:i', strtotime($db->waktu)) !!}</td>
                                             <td style="color: black;">Rp {{ number_format($db->totalbeli) }}</td>
                                             <td style="color: black;">{{ $db->metodepembayaran }}</td>
-                                           
+
 
                                             </td>
                                             <td>
@@ -51,10 +51,10 @@
                                                 } else { ?>
                                                 <a href="{{ url('home/prosespembayaran/' . $db->idpembelianreal) }}"
                                                     class="btn btn-primary">Bayar</a> <br>
-                                               <?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
+                                                <?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
                                                 <?php }
                                             } elseif ($db->statusbeli == "Sudah Upload Bukti Pembayaran" || $db->statusbeli == "Menunggu Konfirmasi") { ?>
-                                                <a class="btn text-white" style="background-color: #7988de">Sudah Di Bayar
+                                                <a class="btn text-black">Sudah Di Bayar
                                                 </a>
                                                 <?php } elseif ($db->statusbeli == "Pesanan Di Terima") { ?>
                                                 <a href="{{ url('home/detailtransaksi/' . $db->idpembelianreal) }}"
