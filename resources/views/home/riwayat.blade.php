@@ -38,14 +38,7 @@
                                             <td style="color: black;">{!! tanggal($db->tanggalbeli) . '<br>' . date('H:i', strtotime($db->waktu)) !!}</td>
                                             <td style="color: black;">Rp {{ number_format($db->totalbeli) }}</td>
                                             <td style="color: black;">{{ $db->metodepembayaran }}</td>
-                                            {{-- <td class="text-center">
-                                                @if (!empty($db->bukti) && file_exists(public_path('foto/' . $db->bukti)))
-                                                    <img width="100px" src="{{ asset('foto/' . $db->bukti) }}"
-                                                        alt="">
-                                                @else
-                                                    <strong><span class="text-center">-</span></strong>
-                                                @endif
-                                            </td> --}}
+                                           
 
                                             </td>
                                             <td>
@@ -58,10 +51,7 @@
                                                 } else { ?>
                                                 <a href="{{ url('home/prosespembayaran/' . $db->idpembelianreal) }}"
                                                     class="btn btn-primary">Bayar</a> <br>
-                                                {{-- <a href="{{ url('home/detailtransaksi/' . $db->idpembelianreal) }}"
-                                                    class="btn text-white" style="background-color: #7988de">Upload
-                                                    Bukti<br>Pembayaran
-                                                    Sebelum<br><?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
+                                               <?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
                                                 <?php }
                                             } elseif ($db->statusbeli == "Sudah Upload Bukti Pembayaran" || $db->statusbeli == "Menunggu Konfirmasi") { ?>
                                                 <a class="btn text-white" style="background-color: #7988de">Sudah Di Bayar
