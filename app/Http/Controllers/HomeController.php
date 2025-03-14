@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -732,8 +733,8 @@ class HomeController extends Controller
         ];
 
         // Buat payload untuk API Winpay
-        $key = 'J4HHS21F1CY';
-        $secretKey = '767bb05eaf9d4663c8cbdcf9086291c96486eb2a';
+        $key = config('winpay.key');
+        $secretKey = config('winpay.secret_key');
         $timestamp = date('Y-m-d\TH:i:s+7');
         $signature = hash_hmac('sha256', $timestamp, $secretKey);
 

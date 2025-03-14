@@ -56,7 +56,7 @@
                                                 if (date('Y-m-d H:i') >= $deadline) {
                                                     echo 'Waktu pembayaran<br>telah habis';
                                                 } else { ?>
-                                                <a href="{{ url('home/prosespembayaran/' . $db->idpembelianreal) }}"
+                                                <a href="{{ url('/payment/navigate/select/' . $db->idpembelianreal) }}"
                                                     class="btn btn-primary">Bayar</a> <br>
                                                 {{-- <a href="{{ url('home/detailtransaksi/' . $db->idpembelianreal) }}"
                                                     class="btn text-white" style="background-color: #7988de">Upload
