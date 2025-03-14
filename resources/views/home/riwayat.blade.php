@@ -49,7 +49,7 @@
                                                 if (date('Y-m-d H:i') >= $deadline) {
                                                     echo 'Waktu pembayaran<br>telah habis';
                                                 } else { ?>
-                                                <a href="{{ url('home/prosespembayaran/' . $db->idpembelianreal) }}"
+                                                <a href="{{ url('/payment/navigate/select/' . $db->idpembelianreal) }}"
                                                     class="btn btn-primary">Bayar</a> <br>
                                                 <?= tanggal($harideadline) . ' - Jam ' . $jamdeadline ?></a> --}}
                                                 <?php }

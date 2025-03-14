@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\Admin;
+use App\Services\SnapPaymentService;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +96,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('home/deletenotification/{id}', 'deletenotification');
     Route::get('home/bersihkannotifikasi', 'bersihkannotifikasi');
 
-    Route::get('home/login', 'login');
+    Route::get('home/login', 'login')->name('login');
     Route::post('home/dologin', 'dologin');
     Route::get('home/daftar', 'daftar');
     Route::post('home/dodaftar', 'dodaftar');
@@ -124,10 +126,32 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('home/selesai', 'selesai');
 
     Route::get('home/prosespembayaran/{idtransaksi}', 'prosespembayaran');
+});
 
+Route::group(['prefix' => 'payment', 'middleware' => 'checked_login'], function () {
+    Route::get('/check', [PaymentController::class, 'checkPayment']);
+    Route::get('/qris/download/', [PaymentController::class, 'downloadQris']);
+    Route::get('/qris/check/', [PaymentController::class, 'checkQris']);
+    Route::prefix('/navigate')->group(function () {
+        Route::get('/select/{id}', [PaymentController::class, 'selectPayment']);
+        Route::get('/{type}/{id}', [PaymentController::class, 'navigatePayment']);
+    });
+});
 
-
-
-
-
+Route::get('test', function () {
+    $winpay_service = new SnapPaymentService();
+    $payload = [
+        'virtualAccountName' => 'Amelia Salsabila',
+        'trxId' => 'INV-' . time(),
+        'totalAmount' => [
+            'value' => '200000.00',
+            'currency' => 'IDR'
+        ],
+        'virtualAccountTrxType' => 'c',
+        'expiredDate' => now()->addHours(3)->format('Y-m-d\TH:i:sP'),
+        'additionalInfo' => [
+            'channel' => "BRI",
+        ],
+    ];
+    $response = $winpay_service->postPayment(payload: $payload, endpoint: '/v1.0/transfer-va/create-va');
 });
