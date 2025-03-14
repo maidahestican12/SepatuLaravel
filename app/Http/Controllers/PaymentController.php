@@ -23,9 +23,10 @@ class PaymentController extends Controller
 
     public function callback(Request $request)
     {
+        //pengaman supaya tidak ada masaslah di bagian database atau apa dan supaya bisa nge rollback
         try {
             $invoice_id = $request->invoice['ref'];
-            DB::beginTransaction();
+            DB::beginTransaction(); //misalkan terjadi masalah dari database, misalnya database error itu msih bisa ngerollback, kalo tidak ada konflik dibakal ngecommit jadi perubahan fungsingnya itu dilakukan
 
             $payment = $this->query()
                 ->pembelian()
@@ -44,7 +45,7 @@ class PaymentController extends Controller
             DB::rollBack();
             return response()->json([
                 'status' => 'error',
-                'message' => 'Terjadi kesalahan pada server' . $e->getMessage()
+                'message' => 'Terjadi kesalahan pada server'
             ], 400);
         }
     }
