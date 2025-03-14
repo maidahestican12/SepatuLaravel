@@ -94,7 +94,6 @@
             <li>Simpan bukti pembayaran untuk referensi.</li>
         </ol>
         <p>Tenggat waktu pembayaran: {{ now()->addHours(3)->diffForHumans() }}</p>
-        {{-- <img src="{{ url('/images/qris.png') }}" alt="Logo qris"> --}}
         <div class="user-center">
             <button class="button" onclick="downloadQR()">Download QR</button>
         </div>

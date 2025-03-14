@@ -107,14 +107,14 @@
                                     <div class="va-options">
                                         <div class="va-option">
                                             <a href="{{ url('/payment/navigate/' . 'alfamart' . '/' . $id) }}">
-                                                <img src="{{ asset('images/alfamart.png') }}" alt="BNI">
+                                                <img src="{{ asset('images/alfamart.png') }}" alt="Alfamart">
                                             </a>
                                             <p>Alfamart</p>
                                         </div>
 
                                         <div class="va-option">
                                             <a href="{{ url('/payment/navigate/' . 'indomaret' . '/' . $id) }}">
-                                                <img src="{{ asset('images/indomart.png') }}" alt="BSI">
+                                                <img src="{{ asset('images/indomaret.png') }}" alt="Indomart">
                                             </a>
                                             <p>Indomaret</p>
                                         </div>

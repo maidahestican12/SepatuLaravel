@@ -90,7 +90,6 @@
             <li>Informasikan nominal pembayaran: <strong>Rp
                     {{ $data['totalAmount']['currency'] . ' ' . number_format($data['totalAmount']['value'], 2, ',', '.') }}</strong>
             </li>
-            <li>Lakukan pembayaran dan simpan struk sebagai bukti.</li>
             <li>Konfirmasi pembayaran dengan mengklik tombol di bawah ini.</li>
         </ol>
         <p>Tenggat waktu pembayaran: {{ \Carbon\Carbon::parse($data['expiredDate'])->diffForHumans() }}</p>
